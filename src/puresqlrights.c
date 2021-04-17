@@ -1,4 +1,4 @@
-#include <mysql/mysql.h>
+#include <mariadb/mysql.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -45,24 +45,46 @@ int main()
     MYSQL_RES *res;
     MYSQL_ROW row;
 
+/*configure like
+export DB_SERVER=localhost
+export DB_SERVER_USERNAME=phoenix
+export DB_SERVER_PASSWORD=phoenix
+export DB_DATABASE=phoenix
+*/
     // assign details to database
     struct connection_details mysql_conn_string;
-    mysql_conn_string.server = "localhost";
-    mysql_conn_string.user = "operaciones";
-    mysql_conn_string.password = "prueba";
-    mysql_conn_string.database = "crud";
+    mysql_conn_string.server = getenv("DB_SERVER");
+    mysql_conn_string.user = getenv("DB_SERVER_USERNAME");
+    mysql_conn_string.password = getenv("DB_SERVER_PASSWORD");
+    mysql_conn_string.database = getenv("DB_DATABASE");
+
 
     // connecting to database with details
     conn = mysql_connection_setup(mysql_conn_string);
 
-    res = mysql_perform_query(conn, "select nombre from usuarios;");
+    if(conn) {
+        res = mysql_perform_query(conn, "select `number` from users;");
 
-    // display query
-    printf("MySQL Tables in mysql database:\n");
-    while ((row = mysql_fetch_row(res)) !=NULL)
-    {
-        printf("%s\n", row[0]);
+        // display query
+        printf("MySQL Tables in mysql database:\n");
+        while ((row = mysql_fetch_row(res)) !=NULL)
+        {
+            printf("%s\n", row[0]);
+        }
+
+
+    } else {
+        printf(
+"#Please configure using environment like:\n"
+"export DB_SERVER=localhost\n"
+"export DB_SERVER_USERNAME=phoenix\n"
+"export DB_SERVER_PASSWORD=phoenix\n"
+"export DB_DATABASE=phoenix\n"
+"to Configure PureSQL user rights\n");
+        exit(1);
     }
+
+
 
     // reset objects
     mysql_free_result(res);

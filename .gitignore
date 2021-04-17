@@ -1,0 +1,8 @@
+/build/CMakeFiles/
+/build/CMakeCache.txt
+/build/
+/obj-x86_64-linux-gnu/
+/debian/.debhelper/
+/debian/puresqltools/
+/debian/puresqltools.substvars
+/debian/debhelper-build-stamp

@@ -1,0 +1,14 @@
+Source: puresqltools
+Section: web
+Priority: optional
+Maintainer: CyberVitexus <info@vitexsoftware.cz>
+Build-Depends: cmake, debhelper (>=11~), libmariadb-dev
+Standards-Version: 4.1.4
+Homepage: https://github.com/PureHTML/PureSQL-tools
+
+Package: puresqltools
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}, libmariadb3
+Description: User Rights manager for PureOSC
+ Apply user sessons into mysql user database

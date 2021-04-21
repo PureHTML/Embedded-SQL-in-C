@@ -1,0 +1,5 @@
+export DB_SERVER=localhost
+export DB_SERVER_USERNAME=ph2_root
+export DB_SERVER_PASSWORD=rootpass
+export DB_DATABASE=ph2
+export NEW_CUSTOMERS_ID_RESERVE=4

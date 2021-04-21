@@ -1,3 +1,0 @@
-/home/f/git/PureSQL-tools/CMakeFiles/rebuild_cache.dir
-/home/f/git/PureSQL-tools/CMakeFiles/puresqlrights.dir
-/home/f/git/PureSQL-tools/CMakeFiles/edit_cache.dir
